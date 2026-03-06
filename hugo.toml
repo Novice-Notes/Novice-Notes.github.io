@@ -3,26 +3,66 @@ languageCode = 'zh-cn'
 title = '小白的笔记'
 theme = 'PaperMod'
 
-# 【新增】顶层作者信息，修复 RSS 报错的关键
+# 【修复 RSS 报错】
 [author]
     name = "Me"
 
+# 【输出配置】
 [outputs]
     home = ["HTML", "RSS", "JSON"]
+
+# 【分类系统】开启标签(tags)和分类(categories)
+[taxonomies]
+    category = "categories"
+    tag = "tags"
+    series = "series"
+
+# 【导航栏菜单】配置顶部导航
+[[menu.main]]
+    identifier = "posts"
+    name = "文章"
+    url = "/posts/"
+    weight = 10
+[[menu.main]]
+    identifier = "categories"
+    name = "分类"
+    url = "/categories/"
+    weight = 20
+[[menu.main]]
+    identifier = "tags"
+    name = "标签"
+    url = "/tags/"
+    weight = 30
+[[menu.main]]
+    identifier = "search"
+    name = "搜索"
+    url = "/search/"
+    weight = 40
 
 [params]
     env = "production"
     title = "小白的笔记"
-    # 这里也建议补一个作者，双重保险
     author = "Me"
     
-    # 功能开关
+    # --- 核心功能 ---
     ShowSearchButton = true
     ShowReadingTime = true
     ShowCodeCopyButtons = true
     defaultTheme = "auto"
     displayFullContent = false
+    
+    # --- 增强功能 ---
+    ShowBreadCrumbs = true          # 面包屑导航
+    ShowShareButtons = true         # 文章底部分享按钮
+    ShowPostNavLinks = true         # 文章底部“上一篇/下一篇”
+    ShowToc = true                  # 自动生成文章目录
+    comments = false                # 评论开关
+    
+    # --- 首页欢迎词 (Profile Mode) ---
+    [params.profileMode]
+        enabled = false # 如果想让首页变成名片模式，可以设为 true
 
+# 【社交图标】
 [[params.socialIcons]]
     name = "github"
     url = "https://github.com/Novice-Notes"

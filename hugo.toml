@@ -1,0 +1,28 @@
+baseURL = 'https://novice-notes.github.io/'
+languageCode = 'zh-cn'
+title = '小白的笔记'
+theme = 'PaperMod'
+
+# 【新增】顶层作者信息，修复 RSS 报错的关键
+[author]
+    name = "Me"
+
+[outputs]
+    home = ["HTML", "RSS", "JSON"]
+
+[params]
+    env = "production"
+    title = "小白的笔记"
+    # 这里也建议补一个作者，双重保险
+    author = "Me"
+    
+    # 功能开关
+    ShowSearchButton = true
+    ShowReadingTime = true
+    ShowCodeCopyButtons = true
+    defaultTheme = "auto"
+    displayFullContent = false
+
+[[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/Novice-Notes"

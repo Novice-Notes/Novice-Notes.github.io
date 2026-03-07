@@ -9,6 +9,8 @@
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
+      // 关键：手动初始化 Identity 并指定你的 Netlify 地址
+      // 请将下面的 'https://your-site-name.netlify.app' 换成你 Netlify 后台显示的那个域名
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
           if (!user) {

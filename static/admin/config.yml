@@ -1,7 +1,11 @@
 backend:
   name: git-gateway
   branch: main
-  site_domain: novice-notes.netlify.app # 确保这里没有写错
+  # --- 强制关联 Netlify 验证服务 ---
+  site_domain: novice-notes.netlify.app
+  identity_url: https://novice-notes.netlify.app/.netlify/identity
+  gateway_url: https://novice-notes.netlify.app/.netlify/git/github
+  # ----------------------------
   
 media_folder: "static/images"
 public_folder: "/images"

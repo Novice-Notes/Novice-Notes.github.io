@@ -3,33 +3,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>小白的笔记 - 管理后台</title>
+    <title>管理后台</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
-      // 核心：手动锁定 Netlify 的 API 地址
-      // 只要你的 Netlify 域名是 novice-notes.netlify.app，这行就是万能钥匙
-      document.addEventListener('DOMContentLoaded', () => {
-        window.repo_config = {
-          backend: {
-            name: 'git-gateway',
-            branch: 'main',
-            site_domain: 'novice-notes.netlify.app'
+      // 核心修复逻辑
+      if (window.netlifyIdentity) {
+        // 1. 强制注入站点 URL 到本地存储
+        localStorage.setItem("netlifySiteURL", "https://novice-notes.netlify.app");
+        
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
           }
-        };
-        // 强制初始化 Identity 窗口
-        if (window.netlifyIdentity) {
-          window.netlifyIdentity.on("init", user => {
-            if (!user) {
-              window.netlifyIdentity.on("login", () => {
-                document.location.href = "/admin/";
-              });
-            }
-          });
-        }
-      });
+        });
+      }
     </script>
   </body>
 </html>
